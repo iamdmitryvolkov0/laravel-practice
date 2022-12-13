@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\PagesController;
 
 /*
 |--------------------------------------------------------------------------
@@ -13,11 +14,6 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get('/laravel', [PagesController::class, "helloPage"]);
 
-Route::get('/laravel',function ()
-{
-   return view('laravel',["skills"=>["PHP","JavaScript", "Python","Kotlin"]]);
-});
+Route::get('/test', [PagesController::class, "testPage"]);
