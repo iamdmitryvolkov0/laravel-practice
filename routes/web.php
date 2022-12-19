@@ -15,5 +15,6 @@ use App\Http\Controllers\PagesController;
 */
 
 Route::get('/laravel', [PagesController::class, "helloPage"]);
-
 Route::get('/test', [PagesController::class, "testPage"]);
+
+Route::get('/todo',[PagesController::class, "todoPage"]);
