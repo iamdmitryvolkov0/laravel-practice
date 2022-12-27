@@ -3,7 +3,7 @@
 @section('content')
     <div class="container mt-5">
         <div class="jumbotron">
-            <h1 class="display-4">Todo</h1>
+            <h1 class="display-4">Tasks In Progress</h1>
             <a href="/todo">All tasks</a>
             <a href="/todo/done">Done</a>
             <a href="/todo/not-done">In progress</a>

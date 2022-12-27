@@ -18,3 +18,5 @@ Route::get('/laravel', [PagesController::class, "helloPage"]);
 Route::get('/test', [PagesController::class, "testPage"]);
 
 Route::get('/todo',[PagesController::class, "todoPage"]);
+Route::get('/todo/done',[PagesController::class, "todoDone"]);
+Route::get('/todo/not-done',[PagesController::class, "todoNotDone"]);

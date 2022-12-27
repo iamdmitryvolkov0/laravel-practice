@@ -21,24 +21,56 @@ class PagesController extends Controller
 
     public function todoPage()
     {
-    /*
-     * Внесение данных в таблицу
-     */
+        /*
+         * Внесение данных в таблицу
+         */
 //        $todo = Todo::create([
-//            "title" => "read a book",
-//            "note" => "from the page 99",
+//            "title" => "cook a dinner ",
+//            "note" => "chicken with potatoes",
 //        ]);
-    /*
-     * Получение всех полей из таблицы
-     */
+        /*
+         * Получение всех полей из таблицы
+         */
         $todos = Todo::all();
 
-    /*
-     * Изменение полей таблицы
-     */
-        $todo = Todo::find(1);
+        /*
+         * Изменение полей таблицы, например статус задачи
+         */
+
+        $todo = Todo::find(12);
+
+        if ($todo) {
+            $todo->status = 1;
+            $todo->save();
+        }
+
+        /*
+         * Удаление данных
+         */
+
+//        if($todo){
+//            $todo->delete();
+//        }
 
         return view('todo', [
+            "todos" => $todos
+        ]);
+    }
+
+    public function todoDone()
+    {
+        $todos = Todo::where('status',1)->get();
+
+        return view('todo_done', [
+            "todos" => $todos
+        ]);
+    }
+
+    public function todoNotDone()
+    {
+        $todos = Todo::where('status',0)->get();
+
+        return view('todo_not_done', [
             "todos" => $todos
         ]);
     }
