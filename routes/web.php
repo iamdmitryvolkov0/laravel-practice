@@ -15,12 +15,12 @@ use App\Http\Controllers\TasksController;
 |
 */
 
-Route::get('/laravel', [CommonController::class, "helloPage"]);
-Route::get('/test', [CommonController::class, "testPage"]);
+Route::get('/laravel', [CommonController::class, "hello"]);
+Route::get('/test', [CommonController::class, "test"]);
 
 Route::prefix('todo')->group(function () {
-    Route::get('/',[TasksController::class, "all"]);
-    Route::get('/done',[TasksController::class, "done"]);
-    Route::get('/not-done',[TasksController::class, "notDone"]);
+    Route::get('/', [TasksController::class, "all"]);
+    Route::get('/done', [TasksController::class, "done"]);
+    Route::get('/not-done', [TasksController::class, "notDone"]);
 });
 

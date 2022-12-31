@@ -10,9 +10,19 @@ class SearchTasksAction
     /**
      * Получение всех полей из таблицы
      */
-    public function execute(): Collection
+    public function execute(array $fields): Collection
     {
+        $query = Task::query();
+
+        switch (true) {
+            case isset($fields['status']):
+                $query->where('status', $fields['status']);
+            case isset($fields['title']):
+                $query->where('title', $fields['title']);
+            default:
+        };
+
         // подумать о пагинации
-        return Task::all();
+        return $query->get();
     }
 }
