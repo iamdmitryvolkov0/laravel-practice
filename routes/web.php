@@ -1,7 +1,8 @@
 <?php
 
+use App\Http\Controllers\CommonController;
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\PagesController;
+use App\Http\Controllers\TasksController;
 
 /*
 |--------------------------------------------------------------------------
@@ -14,9 +15,12 @@ use App\Http\Controllers\PagesController;
 |
 */
 
-Route::get('/laravel', [PagesController::class, "helloPage"]);
-Route::get('/test', [PagesController::class, "testPage"]);
+Route::get('/laravel', [CommonController::class, "hello"]);
+Route::get('/test', [CommonController::class, "test"]);
 
-Route::get('/todo',[PagesController::class, "todoPage"]);
-Route::get('/todo/done',[PagesController::class, "todoDone"]);
-Route::get('/todo/not-done',[PagesController::class, "todoNotDone"]);
+Route::prefix('todo')->group(function () {
+    Route::get('/', [TasksController::class, "all"]);
+    Route::get('/done', [TasksController::class, "done"]);
+    Route::get('/not-done', [TasksController::class, "notDone"]);
+});
+
