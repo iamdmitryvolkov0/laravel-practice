@@ -17,7 +17,10 @@
                             <h4>{{$todo->title}}</h4>
                             <p style="color: #909090">{{$todo->description}}</p>
                         </div>
-                            <span class="badge bg-success rounded-pill">{{$todo->status->name}}</span>
+                        @if($todo->status->value != 2)
+                            <h4><span class="badge bg-warning text-dark  rounded-pill">In progress</span></h4>
+                        @endif
+
                     </li>
                 @endforeach
             </ul>

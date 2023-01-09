@@ -17,7 +17,7 @@
                             <h4>{{$todo->title}}</h4>
                             <p style="color: #909090">{{$todo->description}}</p>
                         </div>
-                            <span class="badge bg-danger rounded-pill">Done</span>
+                        <h4><span class="badge bg-success rounded-pill">Done</span></h4>
                     </li>
                 @endforeach
             </ul>

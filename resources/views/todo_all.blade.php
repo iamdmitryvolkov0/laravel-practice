@@ -3,7 +3,7 @@
 @section('content')
     <div class="container mt-5">
         <div class="jumbotron">
-            <h1 class="display-4">Todo</h1>
+            <h1 class="display-4">All tasks</h1>
             <a href="/todo" class="btn btn-outline-secondary">All tasks</a>
             <a href="/todo/done" class="btn btn-outline-success">Done</a>
             <a href="/todo/not-done" class="btn btn-outline-warning">In progress</a>
@@ -18,9 +18,10 @@
                             <p style="color: #909090">{{$todo->description}}</p>
                         </div>
                         @if($todo->status->value == 1)
-                            <span class="badge bg-success rounded-pill">Completed</span>
-                        @else
-                            <span class="badge bg-danger rounded-pill">In progress</span>
+                            <h4><span class="badge bg-warning text-dark rounded-pill">In progress</span></h4>
+                        @endif
+                        @if($todo->status->value == 2)
+                            <h4><span class="badge bg-success  rounded-pill">Done</span></h4>
                         @endif
                     </li>
                 @endforeach

@@ -7,6 +7,8 @@ use App\Actions\NewTasksAction;
 use App\Actions\NotDoneTasksAction;
 use App\Actions\SearchTasksAction;
 use App\Http\Requests\SearchTasksRequest;
+use Illuminate\Http\Request;
+use App\Models\Task;
 
 class TasksController
 {
@@ -32,8 +34,23 @@ class TasksController
             'todos' => $action->execute()
         ]);
     }
-    public function store()
+    public function form()
     {
         return view('todo_create_form');
+    }
+
+    public function store (Request $request)
+    {
+//        dd($request->only('title','description'));
+        $data= $request->only('title','description');
+//        dd($data);
+        $result=Task::create([
+            'title'=>$data['title'],
+            'description'=>$data['description'],
+        ]);
+
+        if ($result){
+            return redirect('/todo');
+        }
     }
 }

@@ -16,10 +16,12 @@ use App\Http\Controllers\TasksController;
 */
 
 Route::prefix('todo')->group(function () {
-    Route::get('/', [TasksController::class, "all"]);
-    Route::get('/done', [TasksController::class, "done"]);
-    Route::get('/not-done', [TasksController::class, "notDone"]);
-    Route::get('/create', [TasksController::class, "store"]);
+    Route::get('/', [TasksController::class, 'all']);
+    Route::get('/done', [TasksController::class, 'done']);
+    Route::get('/not-done', [TasksController::class, 'notDone']);
+    Route::get('/create', [TasksController::class, 'form']);
+    Route::post('/result', [TasksController::class, 'store']);
+
 
 });
 

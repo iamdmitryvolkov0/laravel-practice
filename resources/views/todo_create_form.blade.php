@@ -11,18 +11,18 @@
         </div>
     </div>
     <div class="container mt-5">
-        <form method="POST" action="/todo">
+        <form method="POST" action="/todo/result">
             @csrf
                 <div class="mb-3">
                     <label class="form-label">Title</label>
-                    <input type="text" class="form-control" id="Title">
+                    <input type="text" class="form-control" name="title" id="title">
                 </div>
                 <div class="mb-3">
                     <label class="form-label">Description</label>
-                    <textarea class="form-control" id="Description" rows="3"></textarea>
+                    <textarea class="form-control" name="description" id="description"></textarea>
                 </div>
                 <button type="submit" class="btn btn-primary">Add new task</button>
-            </>
+        </form>
     </div>
     </form>
 @endsection
