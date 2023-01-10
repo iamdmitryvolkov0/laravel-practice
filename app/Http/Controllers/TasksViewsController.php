@@ -10,8 +10,15 @@ use App\Http\Requests\SearchTasksRequest;
 use Illuminate\Http\Request;
 use App\Models\Task;
 
-class TasksController
+class TasksViewsController
 {
+
+
+    public function main()
+    {
+        return view('main');
+    }
+
     // Сделать фильтр и убрать done и notDone методы
     public function all(SearchTasksRequest $request, SearchTasksAction $action)
     {
@@ -34,23 +41,9 @@ class TasksController
             'todos' => $action->execute()
         ]);
     }
+
     public function form()
     {
         return view('todo_create_form');
-    }
-
-    public function store (Request $request)
-    {
-//        dd($request->only('title','description'));
-        $data= $request->only('title','description');
-//        dd($data);
-        $result=Task::create([
-            'title'=>$data['title'],
-            'description'=>$data['description'],
-        ]);
-
-        if ($result){
-            return redirect('/todo');
-        }
     }
 }

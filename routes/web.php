@@ -1,7 +1,8 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\TasksController;
+use App\Http\Controllers\TasksViewsController;
+use App\Http\Controllers\TasksDataController;
 
 
 /*
@@ -15,12 +16,17 @@ use App\Http\Controllers\TasksController;
 |
 */
 
+Route::get('/',[TasksViewsController::class, 'main']);
+
 Route::prefix('todo')->group(function () {
-    Route::get('/', [TasksController::class, 'all']);
-    Route::get('/done', [TasksController::class, 'done']);
-    Route::get('/not-done', [TasksController::class, 'notDone']);
-    Route::get('/create', [TasksController::class, 'form']);
-    Route::post('/result', [TasksController::class, 'store']);
+    Route::get('/', [TasksViewsController::class, 'all']);
+    Route::get('/done', [TasksViewsController::class, 'done']);
+    Route::get('/not-done', [TasksViewsController::class, 'notDone']);
+    Route::get('/create', [TasksViewsController::class, 'form']);
+
+    Route::post('/result', [TasksDataController::class, 'store']);
+    Route::post('/delete',[TasksDataController::class, 'destroy']);
+    Route::post('/update',[TasksDataController::class, 'statusUpdate']);
 
 
 });
